@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'wirble'
-gem 'awesome_print'
+gem 'nokogiri'
 
-gem 'ruby-debug19'
+gem 'pry'
+gem 'pry-nav'
