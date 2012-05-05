@@ -9,7 +9,7 @@ require 'core_ext/string'
 
 require 'node'
 
-module Magnolia
+module Ylyn
   def self.parse(input)
     case input
     when String
