@@ -1,6 +1,6 @@
 README
 
-Transforms the output of Ripper.sexp into simple XML via Nokogiri, giving you access to the whole XML toolchain, including CSS selectors, XPath, and XSLT.
+Transforms the output of Ripper.sexp into simple XML via Nokogiri, giving you access to the whole XML toolchain, including CSS selectors, XPath, XSLT, and XQuery.
 
 $ bundle exec pry -r './ylyn.rb'
 
