@@ -2,6 +2,7 @@ require 'ripper'
 require 'nokogiri'
 
 class Ylyn
+
   def initialize(arg)
     @sexp = (arg.is_a?(String) ? Ripper.sexp(arg) : arg)
     @builder = Nokogiri::XML::Builder.new
@@ -9,7 +10,7 @@ class Ylyn
   end
 
   def build(sexp)
-    if sexp.nil? or sexp.empty?
+    if sexp.nil? || sexp.empty?
     # noop
     elsif sexp.first.is_a?(Array)
     # container array
@@ -29,7 +30,12 @@ class Ylyn
     @builder
   end
 
-  def method_missing(meth, *args, &block)
-    @doc.send(meth, *args, &block)
+  def method_missing(method, *args, &block)
+    @doc.send(method, *args, &block)
   end
+
+  def respond_to?(method)
+    super || @doc.respond_to?(method)
+  end
+
 end
