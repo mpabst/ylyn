@@ -10,16 +10,16 @@ class Ylyn
   end
 
   def build(sexp)
-    if sexp.nil? || sexp.empty?
-    # noop
+    if not sexp.is_a?(Array)
+      @builder.text(sexp) unless sexp.nil?
+    elsif sexp.empty?
+      @builder.__
     elsif sexp.first.is_a?(Array)
     # container array
       @builder.__ { sexp.each{|s| build(s) } }
     elsif sexp.first.to_s[0] == '@'
     # literal
       @builder.send(sexp[0].to_s.sub('@', '_'), value: sexp[1], location: sexp[2] * ' ')
-    elsif not sexp.is_a?(Array)
-      @builder.text(sexp)
     else
     # compound expression
       @builder.send("#{sexp.first}_") do |_|
@@ -35,7 +35,7 @@ class Ylyn
   end
 
   def respond_to?(method)
-    super || @doc.respond_to?(method)
+    super or @doc.respond_to?(method)
   end
 
 end
