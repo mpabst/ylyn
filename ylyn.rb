@@ -11,17 +11,21 @@ class Ylyn
 
   def build(sexp)
     if not sexp.is_a?(Array)
+    # #text() will take nil, but it fucks up the XML's indentation for some reason
       @builder.text(sexp) unless sexp.nil?
     elsif sexp.empty?
+    # build an empty, "anonymous" <_/> node
       @builder.__
     elsif sexp.first.is_a?(Array)
-    # container array
+    # container array - use <_>
       @builder.__ { sexp.each{|s| build(s) } }
     elsif sexp.first.to_s[0] == '@'
     # literal
+    # substitute leading @s with _s - I'm guessing most XML tools will be happier that way
       @builder.send(sexp[0].to_s.sub('@', '_'), value: sexp[1], location: sexp[2] * ' ')
     else
-    # compound expression
+    # compound expression - Nokogiri uses the trailing _ to disambiguate from core Ruby
+    # methods; _ itself is dropped in built XML
       @builder.send("#{sexp.first}_") do |_|
         sexp[1..-1].each{|s| build(s) }
       end

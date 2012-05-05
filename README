@@ -1,0 +1,11 @@
+README
+
+Transforms the output of Ripper.sexp into simple XML via Nokogiri, giving you access to the whole XML toolchain, including CSS selectors, XPath, and XSLT.
+
+$ bundle exec pry -r './ylyn.rb'
+
+> puts Ylyn.new('class Foo ; end').css('const_ref').to_xml
+
+<const_ref>
+  <_const value="Foo" location="1 6"/>
+</const_ref>
