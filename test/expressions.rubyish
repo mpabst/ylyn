@@ -1,0 +1,110 @@
+# a
+a
+'a'
+"a"
+"#{a}"
+"#{a ; b}"
+"\""
+%{a}
+%Q{a}
+%q{a}
+:a
+1
+1_0
+1.0
+0x1
+[1]
+{:a => 2}
+{a: 2}
+/a/
+/#{a}/
+/#{a ; b}/
+/a/imx
+/[a]/
+/^a$/
+/\Aa\Z/
+/[^a]/
+/(a|b)/
+/a{1,2}/
+/(?:a)/
+%r{a}
+# todo: lookaround
+a = 1
+a, b = 1, 2
+a, b, c = 1, 2, 3
+a, b = *c
+*a = b, c
+a == b
+a != b
+a === b
+a =~ b
+a !~ b
+!a
++1
+-1
+a || b
+a && b
+a | b
+a & b
+a or b
+a and b
+not a
+a ^ b
+a ** b
+a * b
+a + b
+a - b
+a % b
+a / b
+$a
+@a
+@@a
+a.b
+a(b)
+Const
+?a
+a ? b : c
+(a + b)
+a[b]
+a << b
+a >> b
+a > b
+a < b
+a >= b
+a <= b
+a ; b
+`a`
+`#{a}`
+`\n`
+if a ; 1 ; elsif b ; 2; else 3 ; end
+case a ; when b ; 1 ; when c ; 2 ; else ; 3 ; end
+a(b)
+a(b, c, d)
+a(b, c => c, e => f)
+a(*b)
+a(&b)
+a.b
+a.b(c)
+a.b.c.d
+a.b(c).d(e)
+a.b {|c| d }
+a.b {|*c| d }
+a.b do |c| ; d ; end
+do ; a ; while b
+->(a){ b }
+while a ; b ; end
+begin ; a ; rescue b => c ; d ; else ; e ; ensure ; f ; end
+def z(y, m = n, *o, &p) ; 1 ; end
+def a ; z ; rescue b => w ; x ; else c ; y ; ensure ; d ; end
+def self.quux ; end
+class << self ; end
+self
+super
+super(a)
+class Foo < Bar ; end
+module Baz ; end
+true
+false
+nil
+# TODO: all those other reserved words
+# TODO: heredoc

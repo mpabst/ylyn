@@ -2,7 +2,6 @@ require 'ripper'
 require 'nokogiri'
 
 class Ylyn
-
   def initialize(arg)
     @sexp = (arg.is_a?(String) ? Ripper.sexp(arg) : arg)
     @builder = Nokogiri::XML::Builder.new
@@ -12,7 +11,7 @@ class Ylyn
   def build(sexp)
     if not sexp.is_a?(Array)
     # #text() will take nil, but it fucks up the XML's indentation for some reason
-      @builder.text(sexp) unless sexp.nil?
+      @builder.op(class: sexp) unless sexp.nil?
     elsif sexp.empty?
     # build an empty, "anonymous" <_/> node
       @builder.__
@@ -22,7 +21,7 @@ class Ylyn
     elsif sexp.first.to_s[0] == '@'
     # literal
     # substitute leading @s with _s - I'm guessing most XML tools will be happier that way
-      @builder.send(sexp[0].to_s.sub('@', '_'), value: sexp[1], location: sexp[2] * ' ')
+      @builder.send(sexp[0].to_s.sub('@', '_'), class: sexp[1], loc: sexp[2] * ' ')
     else
     # compound expression - Nokogiri uses the trailing _ to disambiguate from core Ruby
     # methods; _ itself is dropped in built XML
