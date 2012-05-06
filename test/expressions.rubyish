@@ -8,6 +8,7 @@ a
 %{a}
 %Q{a}
 %q{a}
+%w( a b c )
 :a
 1
 1_0
@@ -90,21 +91,46 @@ a.b(c).d(e)
 a.b {|c| d }
 a.b {|*c| d }
 a.b do |c| ; d ; end
-do ; a ; while b
+do ; a ; while b # FIXME: not valid Ruby?
 ->(a){ b }
 while a ; b ; end
+while a ; b ; break ; end
+while a ; b ; continue ; end
+for a in b ; c ; end
 begin ; a ; rescue b => c ; d ; else ; e ; ensure ; f ; end
+def a ; end
 def z(y, m = n, *o, &p) ; 1 ; end
 def a ; z ; rescue b => w ; x ; else c ; y ; ensure ; d ; end
 def self.quux ; end
+def a=(b) ; end
+def [](a) ; end
+def <<(a) ; end
+alias a b
+alias :a, :b
 class << self ; end
 self
 super
 super(a)
+Foo.new
+Foo.new(a)
+Foo::Bar::Baz
 class Foo < Bar ; end
-module Baz ; end
+class Foo::Bar ; end
+class Foo::Bar::Baz < Quux ; end
+module Foo ; end
+module Foo::Bar ; end
+module Foo::Bar::Baz ; end
+class Foo ; rescue a => b ; end
+module Foo ; rescue a => b ; end
+FOO
+Foo::BAR
+Foo::Bar::BAZ
+FOO[a]
+FOO = 1
 true
 false
 nil
+require 'foo'
+load 'foo.rb'
 # TODO: all those other reserved words
 # TODO: heredoc

@@ -1,11 +1,13 @@
 TODO:
 
-- figure out why we're losing indentation on to_xml - looks related to text nodes
-- '.' and 'or' showing up as text nodes: approprate?
-- decide what we want text nodes for, if at all
+- extend pruner.rb to do HAML
 
 - test, test, test
   - write test cases for every language construct
   - put them all together
+  - how to handle HEREDOC?
+- ^^^ take output of inspector.rb and testify it
+  - organize expressions.rubyish more logically, so it can be used as a reference
+  - split into multiple files? yes - also handle heredoc that way
 
-- transform XML back into Ruby
+- transform XML back into Ruby - XSLT?
