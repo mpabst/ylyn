@@ -54,6 +54,8 @@ ARGV.each do |path|
   # _ident inside vs. not inside a vcall - only totes useful if params are required
   # call vs fcall vs vcall ?
 
+  # Empty modules and methods?
+
   # unreachable:
   # compile an index of idents etc used in each code block:
   # - method bodies
