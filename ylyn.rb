@@ -20,7 +20,7 @@ class Ylyn
       @builder.__ { sexp.each{|s| build(s) } }
     elsif sexp.first.to_s[0] == '@'
     # literal
-    # substitute leading @s with _s - I'm guessing most XML tools will be happier that way
+    # substitute leading @ with _ - I'm guessing most XML tools will be happier that way
       @builder.send(sexp[0].to_s.sub('@', '_'), class: sexp[1], loc: sexp[2] * ' ')
     else
     # compound expression - Nokogiri uses the trailing _ to disambiguate from core Ruby

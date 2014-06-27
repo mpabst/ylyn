@@ -31,6 +31,7 @@ ARGV.each do |path|
     # aliasing?
     # send?
     # define_method?
+    # alias method chain
 
     # symbols
     ['module > _const', 'class > _const', 'module > const_path_ref > _const', 'class > const_path_ref > _const']
